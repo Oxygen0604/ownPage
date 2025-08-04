@@ -1,0 +1,120 @@
+body::-webkit-scrollbar {
+    display: none;              
+}
+
+@keyframes textFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+.home{
+    display: flex;
+    flex-direction: column;
+
+    .body{
+        display: flex;
+        flex-direction: column;
+    
+        .page1{
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+
+            .header{
+                display: flex;
+                height: 10%;
+                background-color: rgba(0, 0, 0, 0.18);
+                border-radius:50px;
+                margin-top: 5px;
+                box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.18);
+
+                .logo{
+                    display: flex;
+                    flex: 1;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 25px;
+                    font-weight: bold;
+                    background: linear-gradient(
+                        270deg,
+                        #ff7e5f,
+                        #feb47b,
+                        #6a11cb,
+                        #2575fc,
+                        #ff7e5f
+                    );
+                    background-size: 400% 400%;
+
+                    /* 核心技巧：让背景只显示在文字上 */
+                    -webkit-background-clip: text;
+                    background-clip: text;
+
+                    /* 让文字透明，这样才能看到背景渐变 */
+                    color: transparent;
+
+                    /* 动画 */
+                    animation: textFlow 20s ease infinite;
+                }
+
+                .menu{
+                    display: flex;
+                    flex: 4;
+                    font-size: 18px;
+                    font-weight: bold;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10vw;
+
+                }
+
+                .music{
+                    display: flex;
+                    flex: 1;
+                }
+            }
+
+            .content{
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .title{
+                    font-size: 45px;
+                    margin-bottom: 20px;
+                    color: rgb(40, 40, 40);
+                }
+
+                .text{
+                    color: rgb(75, 75, 75);
+                }
+            }
+
+            .footer{
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+                font-size: 14px;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: rgb(186, 187, 187);
+                gap: 5px;
+                img{
+                    width: 30px;
+                }
+            }
+        }
+
+        .page2{
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+
+        }
+    }
+}

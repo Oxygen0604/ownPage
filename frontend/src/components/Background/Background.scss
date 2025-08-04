@@ -1,0 +1,9 @@
+.starfield{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-image: linear-gradient(to left bottom, #ffffff, #e4e4e8, #c9cad1, #afb1bb, #9498a5, #858996, #777a87, #696c79, #62636d, #5a5a61, #525255, #4a4a4a);
+}
