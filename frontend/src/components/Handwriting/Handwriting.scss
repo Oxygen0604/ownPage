@@ -1,0 +1,37 @@
+.handwriting-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  .stroke-1 { animation-delay: 0s; }
+  .stroke-2 { animation-delay: 2s; }
+  .stroke-3 { animation-delay: 4s; }
+  .stroke-4 { animation-delay: 6s; }
+  .stroke-5 { animation-delay: 8s; }
+
+  .stroke {
+    fill: none;
+    stroke: black;           // 笔画颜色
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  
+    animation: draw 2s linear forwards;
+  }
+  
+  .welcome-path{
+    .welcome-svg {
+      width: 80%;
+      height: auto;
+    }
+
+  }
+
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

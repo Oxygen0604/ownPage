@@ -44,7 +44,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.svg$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         type: "asset/resource", // Webpack 5 推荐
       },
     ],

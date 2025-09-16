@@ -1,0 +1,76 @@
+.preview-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 18vw;
+    height: 18vh;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2); /* 半透明 */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* 光线折射的边界感 */
+    backdrop-filter: blur(12px) saturate(180%); /* 模糊和饱和度增强 */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* 投影增强空间感 */
+    
+    .window {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: 80%;
+        border-radius: 20px;
+        justify-content: flex-start;
+      img {
+        height: auto;
+        width: 100%;
+        object-fit: contain; /* 保持比例缩放，不拉伸 */
+      }
+    }
+
+    .preview-window-ani-enter{
+      opacity: 0;
+      transform: scale(0);      
+    }
+
+    .preview-window-ani-enter-active{
+      opacity: 1;
+      transform: scale(1);
+      transition: all 0.5s ease-in-out
+    }
+
+    .preview-window-ani-exit{
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .preview-window-ani-exit-active{
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.5s ease-in-out
+    }
+
+    .preview-window{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 400px;
+        height: 345px;
+        z-index: 500;
+        top: 0;
+
+
+        .preview-iframe{
+            display: flex;
+            width: 400px;
+            height: 300px;
+            z-index: 500;
+            position: absolute;
+            border-radius: 20px;
+        }
+
+        .preview-footer{
+            display: flex;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+  }
+  

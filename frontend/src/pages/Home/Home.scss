@@ -8,113 +8,281 @@ body::-webkit-scrollbar {
     100% { background-position: 0% 50%; }
   }
 
+@keyframes growLine {
+    to {
+        transform: scaleX(1)        
+    }
+}
+
+@keyframes header-collapse-ani {
+    0% {
+        width: 100vw;
+        transform: translateX(calc(-50vw + 100px)) scale(1);
+        
+    }
+    40%{
+        width: 200px;
+        transform: scale(0.7);
+    }
+    100%{
+        width: 200px;
+        transform: translateY(88vh) scale(0.7);
+    }
+}
+
+@keyframes header-expand-ani {
+    0% {
+        width: 200px;
+        transform: translateX(calc(50vw - 100px)) scale(0.7) translateY(60vh) ;
+        opacity: 1;
+    }
+    40%{
+        width: 200px;
+        transform: translateX(calc(50vw - 100px)) scale(0.7) translateY(60vh) ;
+        opacity: 0;
+    }
+    41%{
+        width: 200px;
+        transform: translateX(calc(50vw - 100px)) scale(0.7) translateY(0) ;
+        opacity: 0;
+    }
+    100%{
+        width: 100vw;
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
 .home{
     display: flex;
     flex-direction: column;
+    position: relative;
+    .background-ani-enter{
+        opacity: 0;
+    }
 
+    .background-ani-enter-active{
+        opacity: 1;
+        transition:all 0.8s ease-out;
+    }
+
+    .background-ani-exit{
+        opacity: 1;
+    }
+
+    .background-ani-exit-active{
+        opacity: 0;
+        transition:all 0.8s ease-out;
+    }   
+    
     .body{
         display: flex;
         flex-direction: column;
-    
-        .page1{
+        position: relative;
+
+        .header{
             display: flex;
-            flex-direction: column;
-            width: 100vw;
-            height: 100vh;
+            height: 10vh;
+            background-color: rgba(0, 0, 0, 0.18);
+            border-radius:50px;
+            margin-top: 5px;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.18);
+            position: relative;
 
-            .header{
+            &.collapsed{
                 display: flex;
-                height: 10%;
-                background-color: rgba(0, 0, 0, 0.18);
-                border-radius:50px;
-                margin-top: 5px;
-                box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.18);
+                animation: header-collapse-ani 3s ease-in-out forwards;
+                position: fixed;
+                width: 200px;
+                height: 10vh;
+                left: calc(50vw - 100px);
 
-                .logo{
-                    display: flex;
-                    flex: 1;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 25px;
-                    font-weight: bold;
-                    background: linear-gradient(
-                        270deg,
-                        #ff7e5f,
-                        #feb47b,
-                        #6a11cb,
-                        #2575fc,
-                        #ff7e5f
-                    );
-                    background-size: 400% 400%;
-
-                    /* 核心技巧：让背景只显示在文字上 */
-                    -webkit-background-clip: text;
-                    background-clip: text;
-
-                    /* 让文字透明，这样才能看到背景渐变 */
-                    color: transparent;
-
-                    /* 动画 */
-                    animation: textFlow 20s ease infinite;
-                }
-
-                .menu{
-                    display: flex;
-                    flex: 4;
-                    font-size: 18px;
-                    font-weight: bold;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 10vw;
-
-                }
-
-                .music{
-                    display: flex;
-                    flex: 1;
-                }
+                  
+                div.collapsed {
+                    opacity: 0;
+                    pointer-events: none;
+                    transform: scale(0); 
+                    transition: all 0.3s ease-in-out;
+                  }
+                  
+                .logo {
+                    position: relative;
+                    left: 53px;
+                    pointer-events: auto;
+                    width: 100%;   /* 给它明确的宽度 */
+                    height: 100%;  /* 给它明确的高度 */
+                  }
             }
 
-            .content{
+             &.expanded{
+                width: 100vw;
+                animation: header-expand-ani 2s ease-in-out forwards;
+
+                div.expanded{
+                    pointer-events: auto;
+                    transform: scale(1); 
+                    transition: all 0.5s ease-in-out 1.2s;
+                }
+
+            }
+
+            .logo{
                 display: flex;
                 flex: 1;
-                flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                font-size: 25px;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 100;
+                background: linear-gradient(
+                    270deg,
+                    #ff7e5f,
+                    #feb47b,
+                    #6a11cb,
+                    #2575fc,
+                    #ff7e5f
+                );
+                background-size: 400% 400%;
 
-                .title{
-                    font-size: 45px;
-                    margin-bottom: 20px;
-                    color: rgb(40, 40, 40);
-                }
+                /* 核心技巧：让背景只显示在文字上 */
+                -webkit-background-clip: text;
+                background-clip: text;
 
-                .text{
-                    color: rgb(75, 75, 75);
-                }
+                /* 让文字透明，这样才能看到背景渐变 */
+                color: transparent;
+
+                /* 动画 */
+                animation: textFlow 20s ease infinite;
             }
 
-            .footer{
+            .menu{
                 display: flex;
+                flex: 4;
+                font-size: 18px;
+                font-weight: bold;
                 justify-content: center;
-                flex-direction: column;
                 align-items: center;
-                position: relative;
-                font-size: 14px;
-                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                color: rgb(186, 187, 187);
-                gap: 5px;
-                img{
-                    width: 30px;
+                gap: 10vw;
+
+                .homePage-btn,.selfInfo-btn,.webInfo-btn{
+                    display: flex;
+                    flex-direction: column;
+                    cursor: pointer;
+                    padding: 30px 60px;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 100;
+                    position: relative;
+                
+                    .active{
+                        position: absolute;
+                        top: 60%;
+                        height: 5px;
+                        width: 7vw;
+                        z-index: 101;
+                        background-color: rgb(230, 230, 230);
+                        transform: scaleX(0); 
+                        animation: growLine 1s forwards;
+                        transform-origin: left;
+                        margin-top: 15px;
+                        border-radius: 5px;
+                    }
+                }
+
+            }
+
+            .music{
+                display: flex;
+                flex: 1;
+            }
+        }
+
+        .page-ani-enter{
+            transform: translateY(100vh);
+        }
+        .page-ani-enter-active{
+            transform: translateY(0);
+            transition:all 0.8s ease-out;
+        }
+
+        .page-ani-exit{
+            transform: translateY(0);
+        }
+        .page-ani-exit-active{
+            transform: translateY(100vh);
+            transition:all 0.8s ease-out;
+        }
+
+        .homePage{
+
+            // &.unactive{
+            //     transform: translateY(0);
+            //     animation: page-floatOut 0.8s ease-out forwards;
+            // }
+
+            .page1{
+                display: flex;
+                flex-direction: column;
+                width: 100vw;
+                height: 90vh;
+        
+                .content{
+                    display: flex;
+                    flex: 1;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+    
+                    .title{
+                        font-size: 45px;
+                        margin-bottom: 20px;
+                        color: rgb(40, 40, 40);
+                    }
+    
+                    .text{
+                        color: rgb(75, 75, 75);
+                    }
+                }
+    
+                .footer{
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+                    font-size: 14px;
+                    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    color: rgb(186, 187, 187);
+                    gap: 5px;
+                    img{
+                        width: 30px;
+                    }
+                }
+
+            }
+    
+            .page2{
+                display: flex;
+                flex-direction: column;
+                width: 100vw;
+                height: 90vh;
+                margin-top: 10vh;
+                padding: 0 12vw;
+                .content{
+                    display: flex;
+                    padding-top: 10vh;
+
+                    .window{
+                        display: flex;
+                    }
                 }
             }
         }
 
-        .page2{
+        .selfInfo{
             display: flex;
             flex-direction: column;
-            width: 100vw;
-            height: 100vh;
-
-        }
+            }
     }
 }

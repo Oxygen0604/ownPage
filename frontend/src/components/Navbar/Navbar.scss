@@ -1,10 +1,68 @@
 .navbar{
     display: flex;
-    border-bottom: 2px solid black;
+    align-items: center; 
+    justify-content: space-between; 
     position: fixed;
-    top: 0;
     width: 100%;
     z-index: 100;
-    background-color: white;
     height: 10vh;
+    background-color: rgb(156, 156, 156);
+    box-shadow: 0px 2px 5px rgb(156, 156, 156);
+    border-radius: 50px;
+    margin-top: 5px;
+
+
+    .logo{
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        font-weight: bold;
+        background: linear-gradient(
+            270deg,
+            #ff7e5f,
+            #feb47b,
+            #6a11cb,
+            #2575fc,
+            #ff7e5f
+        );
+        background-size: 400% 400%;
+
+        /* 核心技巧：让背景只显示在文字上 */
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        /* 让文字透明，这样才能看到背景渐变 */
+        color: transparent;
+
+        /* 动画 */
+        animation: textFlow 20s ease infinite;
+    }
+
+    .function{
+        display: flex;
+        flex: 3;
+        font-size: 18px;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        gap: 25vw;
+        cursor: pointer;
+    }
+
+    .search{
+        display: flex;
+        flex: 1;
+        font-size: 18px;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        gap: 10vw;
+
+        .ant-input{
+            width: 80%;
+            border-radius: 30px;
+        }
+    }
 }
