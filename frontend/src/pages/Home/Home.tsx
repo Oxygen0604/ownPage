@@ -183,8 +183,11 @@ const Home = () => {
             unmountOnExit
           >
           <div className='selfInfo' ref={selfInfoRef}>
-            <div>
+            <div className='welcome'>
               <Handwriting />
+              <div className='text'>
+                向下滑动以开启
+              </div>
             </div>
           </div>
         </CSSTransition>

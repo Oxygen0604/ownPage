@@ -2,6 +2,14 @@ body::-webkit-scrollbar {
     display: none;              
 }
 
+@font-face {
+  font-family: "PinRuHandwrite";
+  src: url("../../../assets/fonts/PinRuShouXieTi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* 优化加载体验 */
+}
+
 @keyframes textFlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -88,6 +96,7 @@ body::-webkit-scrollbar {
             margin-top: 5px;
             box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.18);
             position: relative;
+            z-index: 100;
 
             &.collapsed{
                 display: flex;
@@ -116,13 +125,13 @@ body::-webkit-scrollbar {
 
              &.expanded{
                 width: 100vw;
-                animation: header-expand-ani 2s ease-in-out forwards;
+                // animation: header-expand-ani 2s ease-in-out forwards;
 
-                div.expanded{
-                    pointer-events: auto;
-                    transform: scale(1); 
-                    transition: all 0.5s ease-in-out 1.2s;
-                }
+                // div.expanded{
+                //     pointer-events: auto;
+                //     transform: scale(1); 
+                //     transition: all 0.5s ease-in-out 1.2s;
+                // }
 
             }
 
@@ -283,6 +292,26 @@ body::-webkit-scrollbar {
         .selfInfo{
             display: flex;
             flex-direction: column;
+            // z-index: 0;
+            
+            .welcome{
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                position: relative;
+
+                .text{
+                    position: absolute;
+                    top: 55%;
+                    width: 100vw;
+                    justify-content: center;
+                    text-align: center;
+                    color: rgb(133, 133, 133);
+                    font-size: 20px;
+                }
             }
+
+
+        }
     }
 }
